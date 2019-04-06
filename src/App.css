@@ -1,33 +1,147 @@
-.App {
-  text-align: center;
+.player{
+    width: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: normal;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: normal;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+#LOGO{
+    display:block;
+    width:150px;
+    height:150px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 150px;
+    margin:0 10px 10px 0;
+    padding:10px 21px;
+    text-transform:uppercase;
+    font-weight:400;
+    font-size:16px;
+    color:lawngreen; /*#3e3e3e;*/
+    background:black; /*#7cb289;*/
+    transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    float: left;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.profileSettings{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: normal;
+}
+.button{
+    border: 2px solid lawngreen;
+    color: lawngreen;
+    background-color: black;
 }
 
-.App-link {
-  color: #61dafb;
+.text{
+    border: 2px solid lawngreen;
+    color: lawngreen;
+    background-color: black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.textLabel{
+    color: lawngreen;
+    background-color: black;
+}
+
+.login{
+    background-color: black;
+}
+
+.register{
+    background-color: black;
+}
+
+.info{
+    background-color: black;
+}
+
+:root {
+    --main-color: grey;
+    --secondary-color: lawngreen;
+    --main-text-color: lawngreen;
+    --secondary-text-color: lawngreen;
+    --send-message-form: black;
+}
+
+.rooms {
+    border: 2px solid lawngreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    color: var(--secondary-color);
+    background: var(--send-message-form);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.message {
+    margin: 15px 0;
+}
+
+.message div:nth-child(1) {
+    font-size: 11px;
+    color: var(--main-text-color);
+    opacity: 0.9;
+    margin-bottom: 6px;
+}
+.message div:nth-child(2) {
+    background: var(--main-color);
+    color: var(--secondary-color);
+    display: inline;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+.message-list {
+    border: 2px solid lawngreen;
+    box-sizing: border-box;
+    padding: 0 0 0 6px;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    background: black;
+}
+
+.send-message-form {
+    border: 2px solid lawngreen;
+    background: var(--send-message-form);
+    display: flex;
+    box-sizing: border-box;
+    height: 60px;
+}
+
+.send-message-form input {
+    width: 100%;
+    padding: 15px 10px;
+    border: none;
+    margin: 0;
+    background: var(--send-message-form);
+    font-weight: 200;
+    color: lawngreen;
+}
+
+.send-message-form input:focus {
+    outline-width: 0;
+}
+
+.send-message-form input::placeholder {
+    color: lawngreen;
 }
