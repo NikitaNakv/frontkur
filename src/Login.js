@@ -62,6 +62,9 @@ export default class Login extends Component {
                         </div>
                     </form>
                     <button className="button" onClick={()=>{this.login()}}>Log in</button>
+                    <div id="idsa_div">
+                        <label id="idsa"/>
+                    </div>
                 </div>
             </div>
         );

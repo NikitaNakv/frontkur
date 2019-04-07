@@ -204,7 +204,8 @@ export default class Client{
                             const array = response.chats;
                             resolve(array);
                         }else{
-                            // TODO response.error
+                            let regis = new Register();
+                            regis.upd(response.error);
                         }
                     }
                 }
@@ -225,19 +226,18 @@ export default class Client{
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
-                        console.log(xhr.responseText);
                         let response = JSON.parse(xhr.responseText);
                         if (response.status === "pass") {
                             const messages = response.messages.reverse();
                             resolve(messages);
                         }else{
-                            // TODO response.error
+                            let regis = new Register();
+                            regis.upd(response.error);
                         }
                     }
                 }
             };
             let data = JSON.stringify({username:name,authKey:code});
-            console.log(data);
             xhr.send(data);
         });
         return result;
@@ -256,18 +256,17 @@ export default class Client{
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
-                        console.log(xhr.responseText);
                         let response = JSON.parse(xhr.responseText);
                         if (response.status === "pass") {
                             resolve(response);
                         }else{
-                            // TODO response.error
+                            let regis = new Register();
+                            regis.upd(response.error);
                         }
                     }
                 }
             };
             let data = JSON.stringify({text:text});
-            console.log(data);
             xhr.send(data);
         });
         return result;
@@ -290,7 +289,8 @@ export default class Client{
                         if (response.status === "pass") {
                             resolve(response);
                         }else{
-                            // TODO response.error
+                            let regis = new Register();
+                            regis.upd(response.error);
                         }
                     }
                 }
@@ -301,4 +301,124 @@ export default class Client{
         });
         return result;
     }
+
+
+    joinChat(name,code,chatname){
+        let result = new Promise((resolve,reject) => {
+            let xhr = new XMLHttpRequest();
+            let url = "http://env-8452931.mircloud.host/course/rest/joinChat";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("joiner-username",name);
+            xhr.setRequestHeader("joiner-auth-key",code);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        console.log(xhr.responseText);
+                        let response = JSON.parse(xhr.responseText);
+                        if (response.status === "pass") {
+                            resolve(response);
+                        }else{
+                            let regis = new Register();
+                            regis.upd(response.error);
+                        }
+                    }
+                }
+            };
+            let data = JSON.stringify({chatname:chatname});
+            console.log(data);
+            xhr.send(data);
+        });
+        return result;
+    }
+
+    getChatRequests(name,code,chatname){
+        let result = new Promise((resolve,reject) => {
+            let xhr = new XMLHttpRequest();
+            let url = "http://env-8452931.mircloud.host/course/rest/getChatRequests";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("admin-username",name);
+            xhr.setRequestHeader("admin-auth-key",code);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        console.log(xhr.responseText);
+                        let response = JSON.parse(xhr.responseText);
+                        if (response.status === "pass") {
+                            let requests = response.requests;
+                            resolve(requests);
+                        }else{
+                            let regis = new Register();
+                            regis.upd(response.error);
+                        }
+                    }
+                }
+            };
+            let data = JSON.stringify({chatname:chatname});
+            console.log(data);
+            xhr.send(data);
+        });
+        return result;
+    }
+
+
+    acceptChatRequest(name,code,joinerName,chatname){
+        let result = new Promise((resolve,reject) => {
+            let xhr = new XMLHttpRequest();
+            let url = "http://env-8452931.mircloud.host/course/rest/acceptChatRequest";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("admin-username",name);
+            xhr.setRequestHeader("admin-auth-key",code);
+            xhr.setRequestHeader("joiner-username",joinerName);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        console.log(xhr.responseText);
+                        let response = JSON.parse(xhr.responseText);
+                        if (response.status === "pass") {
+                            resolve(response);
+                        }else{
+                            let regis = new Register();
+                            regis.upd(response.error);
+                        }
+                    }
+                }
+            };
+            let data = JSON.stringify({chatname:chatname});
+            console.log(data);
+            xhr.send(data);
+        });
+        return result;
+    }
+
+    getAdminedChats(name,code){
+        let result = new Promise((resolve,reject) => {
+            let xhr = new XMLHttpRequest();
+            let url = "http://env-8452931.mircloud.host/course/rest/getAdminedChats";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        console.log(xhr.responseText);
+                        let response = JSON.parse(xhr.responseText);
+                        if (response.status === "pass") {
+                            let chats = response.chats;
+                            resolve(chats);
+                        }else{
+                            let regis = new Register();
+                            regis.upd(response.error);
+                        }
+                    }
+                }
+            };
+            let data = JSON.stringify({username:name,authKey:code});
+            console.log(data);
+            xhr.send(data);
+    });
+    return result;
+    }
+
 }

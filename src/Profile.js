@@ -12,11 +12,6 @@ class Profile extends Component{
         this.client = new Client();
     }
 
-    onClick(path){
-        window.location.assign("." + path);
-    }
-
-
     render() {
 
         return(

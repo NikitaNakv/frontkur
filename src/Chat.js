@@ -20,7 +20,7 @@ export default class Chat extends Component {
 
         console.log(this.state.messages);
 
-        this.interval = setInterval(()=>this.client.getChatMessages(localStorage.getItem('username'),localStorage.getItem('authKey'),this.state.chatRooms[0].chatname)
+        this.interval = setInterval(()=>this.client.getChatMessages(localStorage.getItem('username'),localStorage.getItem('authKey'),this.getSelectedRoom())
             .then(r => this.setState({messages:r})),500);
 
     }
@@ -51,11 +51,15 @@ export default class Chat extends Component {
         this.state.messages.unshift(message);
         this.forceUpdate();
         this.client.sendMessage(localStorage.getItem("username"),localStorage.getItem("authKey"),
-            "aloha",text);
+            this.getSelectedRoom(),text);
     }
 
     getSelectedRoom(){
         return document.getElementById("selectRoom").value
+    }
+
+    onClick(path){
+        window.location.assign("." + path);
     }
 
     render() {
@@ -66,6 +70,7 @@ export default class Chat extends Component {
                     messages={this.state.messages} />
                 <SendMessageForm
                     sendMessage={this.sendMessage} />
+                    <button className="button" onClick={() => {this.onClick("/managechats")}}>Manage Chats</button>
             </div>
         );
     }
@@ -147,11 +152,3 @@ class Rooms extends Component{
         )
     }
 }
-
-
-
-
-              /*<td>{Math.round(this.props.pts.x*100)/100}</td>
-                <td>{Math.round(this.props.pts.y*100)/100}</td>
-                <td>{Math.round(this.props.pts.r*100)/100}</td>
-                <td>{Math.round(this.props.pts.result*100)/100}</td>*/
