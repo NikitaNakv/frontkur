@@ -39,7 +39,8 @@ export default class Client{
             if (xhr.readyState === 4 && xhr.status === 200) {
                 let response = JSON.parse(xhr.responseText);
                 if (response.status === "pass"){
-
+                    let regis = new Register();
+                    regis.upd("successful");
                 } else{
                     let regis = new Register();
                     regis.upd(response.error);
@@ -59,8 +60,6 @@ export default class Client{
             if (xhr.readyState === 4 && xhr.status === 200) {
                 let response = JSON.parse(xhr.responseText);
                 if (response.status === "pass"){
-                    let cli = new Client();
-                    cli.login();
                     window.location.assign("./login");
                 } else{
                     let regis = new Register();
@@ -83,6 +82,7 @@ export default class Client{
                     if (xhr.status === 200) {
                         let result = JSON.parse(xhr.responseText);
                         if (result.status === "pass") {
+                            localStorage.setItem("auth","pass");
                             resolve(result);
                         }
                         else

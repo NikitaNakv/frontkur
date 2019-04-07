@@ -17,8 +17,10 @@ export default class ChatSettings extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.getSelected("selectChat") !== null && this.getSelected("selectChat") !== undefined && this.getSelected("selectChat") !== "") {
         this.client.getChatRequests(localStorage.getItem("username"),localStorage.getItem("authKey"),this.getSelected("selectChat"))
             .then(r=>this.setState({requests:r}));
+        }
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {

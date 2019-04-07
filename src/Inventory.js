@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Chat from "./Chat";
-import ProfileSettings from "./ProfileSettings"
+import InventorySettings from "./InventorySettings"
+import CaseSettings from "./CaseSettings"
 import Client from './Client';
 import Menu from './Menu';
 
@@ -13,11 +14,10 @@ class Inventory extends Component{
     }
 
     render() {
-
         return(
             <div className="profile">
                 <Menu/>
-                <ProfileSettings/>
+                <InventorySettings/>
                 <Chat/>
             </div>
         )

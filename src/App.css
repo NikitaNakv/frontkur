@@ -18,10 +18,6 @@
     justify-content: normal;
 }
 
-.loginForm{
-    border: 2px solid lawngreen;
-}
-
 .caseContainer{
     border: 2px solid lawngreen;
     width: 100%;
@@ -139,7 +135,9 @@
     flex-direction: column-reverse;
     overflow: scroll;
     background: black;
+    min-height: 300px;
     max-height: 300px;
+    min-width: 320px;
     max-width: 320px;
 }
 

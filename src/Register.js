@@ -46,9 +46,15 @@ export default class Register extends Component {
     };
 
     upd(error) {
-        document.getElementById("idsa").innerHTML = error;
-        document.getElementById("idsa").setAttribute("style", "color: black");
-        document.getElementById("idsa_div").setAttribute("style", "background-color: red");
+        if (error !== "successful") {
+            document.getElementById("idsa").innerHTML = error;
+            document.getElementById("idsa").setAttribute("style", "color: black");
+            document.getElementById("idsa_div").setAttribute("style", "background-color: red");
+        }else{
+            document.getElementById("idsa").innerHTML = error;
+            document.getElementById("idsa").setAttribute("style", "color: black");
+            document.getElementById("idsa_div").setAttribute("style", "background-color: green");
+        }
     }
 
     render() {
