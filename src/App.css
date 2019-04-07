@@ -16,6 +16,22 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: normal;
+    margin: 10px;
+}
+
+.inventorySettings{
+    width: 280px;
+    border: 2px solid lawngreen;
+    margin: 10px;
+}
+
+.inventory{
+    width: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: normal;
 }
 
 .caseContainer{
@@ -50,7 +66,25 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: normal;
+    border: 2px solid lawngreen;
+    margin: 5px;
+    min-width: 300px;
 }
+
+.profileInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: normal;
+}
+
+.profileInfoContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: normal;
+}
+
 .button{
     border: 2px solid lawngreen;
     color: lawngreen;
@@ -68,7 +102,6 @@
 .textLabel{
     color: lawngreen;
     background-color: black;
-    border: 2px solid lawngreen;
     margin: 4px;
 }
 
@@ -164,5 +197,11 @@
 }
 
 .send-message-form input::placeholder {
+    color: lawngreen;
+}
+
+#selectRoom{
+    width: 100%;
+    background-color: black;
     color: lawngreen;
 }

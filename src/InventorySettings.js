@@ -6,18 +6,45 @@ export default class InventorySettings extends Component {
         super(props);
         this.state = {
             items : [],
-            currentItem : ""
+            currentItem : {},
+            equipedItem : {}
 
         };
         this.client = new Client();
     }
 
-    componentDidMount() {
-    }
+    componentWillMount() {
+        this.client.getUserItems(localStorage.getItem("username"),localStorage.getItem("authKey"))
+            .then(r=>this.setState({items:r}));
+    };
 
     getSelectedItem(){
-        let currentItem = this.state.items.filter(x=>x.name===document.getElementById("selectItem").value);
+        let currentItem = this.state.items.find(x=>x.itemName === document.getElementById("selectItem").value);
         this.setState({currentItem : currentItem});
+    };
+    getEquipedItem(){
+        this.client.getEquipedItem(localStorage.getItem("username"),localStorage.getItem("authKey"))
+            .then(r=>this.setState({equipedItem : r}));
+    };
+
+
+    componentDidUpdate() {
+        this.getSelectedItem();
+        this.getEquipedItem();
+    }
+
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        if (this.state.items.length === nextState.items.length && this.state.currentItem === nextState.currentItem &&
+            this.state.equipedItem === nextState.equipedItem) {
+            return false
+        }
+        return true
+    }
+
+    equipHandler() {
+        this.client.equipItem(localStorage.getItem("username"),localStorage.getItem("authKey"),
+            this.state.items.find(x=>x.itemName === document.getElementById("selectItem").value).itemName);
+        setTimeout(() => this.forceUpdate(),100);
     }
 
     render() {
@@ -27,24 +54,34 @@ export default class InventorySettings extends Component {
                     <div>
                         <select id="selectItem" onChange={()=>{this.getSelectedItem()}}>
                             {this.state.items.map((item, i) =>
-                                <option key={i} value={item.itemname}>{item.itemname}</option>)}
+                                <option key={i} value={item.itemName}>{item.itemName}</option>)}
                         </select>
                     </div>
                     <div>
                         <div>
-                            <label >{this.state.currentItem.count}</label>
+                            <label className="textLabel" >count:</label>
+                            <label className="textLabel">{this.state.currentItem.itemsCount}</label>
                         </div>
                         <div>
-                            <label >{this.state.currentItem.itemname}</label>
+                            <label className="textLabel">Item's name:</label>
+                            <label className="textLabel" >{this.state.currentItem.itemName}</label>
                         </div>
                         <div>
-                            <label >{this.state.currentItem.attack}</label>
+                            <label className="textLabel">attack:</label>
+                            <label className="textLabel" >{this.state.currentItem.attack}</label>
                         </div>
                         <div>
-                            <label >{this.state.currentItem.defense}</label>
+                            <label className="textLabel">defense:</label>
+                            <label className="textLabel" >{this.state.currentItem.defense}</label>
                         </div>
                         <div>
-                            <label >{this.state.currentItem.hp}</label>
+                            <label className="textLabel">hp:</label>
+                            <label className="textLabel" >{this.state.currentItem.hp}</label>
+                        </div>
+                        <button type="button" className="button" onClick={()=>this.equipHandler()}>Equip it</button>
+                        <div>
+                            <label className="textLabel">Equiped item:</label>
+                            <label className="textLabel" >{this.state.equipedItem.toString()}</label>
                         </div>
                     </div>
                 </form>
@@ -54,4 +91,5 @@ export default class InventorySettings extends Component {
             </div>
         );
     }
+
 }

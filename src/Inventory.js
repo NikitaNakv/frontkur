@@ -15,7 +15,7 @@ class Inventory extends Component{
 
     render() {
         return(
-            <div className="profile">
+            <div className="inventory">
                 <Menu/>
                 <InventorySettings/>
                 <Chat/>

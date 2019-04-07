@@ -37,24 +37,26 @@ export default class ProfileSettings extends Component {
     render() {
         return (
             <div className="profileSettings">
-                <div>
-                    <button disabled="disabled" className="button">current username</button>
-                    <button disabled="disabled" className="button">{this.state.username}</button>
-                </div>
-                <div>
-                    <button disabled="disabled" className="button">current email</button>
-                    <button disabled="disabled" className="button">{this.state.email}</button>
+                <div className="profileInfoContainer">
+                    <div className="profileInfo">
+                        <label className="textLabel">current username:</label>
+                        <label className="textLabel">current email:</label>
+                    </div>
+                    <div className="profileInfo">
+                        <label className="textLabel">{this.state.username}</label>
+                        <label className="textLabel">{this.state.email}</label>
+                    </div>
                 </div>
                 <form>
                     <div>
-                        <button disabled="disabled" className="button">change password</button>
+                        <label className="textLabel">change password</label>
                         <div>
                             <input id="newPasswordInput" type="text" className="text"/>
                             <button className="button" type="button" onClick={()=> {this.passwordChangeHandler()}}>change</button>
                         </div>
                     </div>
                     <div>
-                        <button disabled="disabled" className="button">change email</button>
+                        <label className="textLabel">change email</label>
                         <div>
                             <input id="newEmailInput" type="text" className="text"/>
                             <button className="button" type="button" onClick={()=> {this.emailChangerHandler()}}>change</button>

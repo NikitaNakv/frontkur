@@ -421,4 +421,90 @@ export default class Client{
     return result;
     }
 
+    getUserItems(name,code){
+        let result = new Promise((resolve,reject) => {
+            let xhr = new XMLHttpRequest();
+            let url = "http://env-8452931.mircloud.host/course/rest/getUserItems";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        console.log(xhr.responseText);
+                        let response = JSON.parse(xhr.responseText);
+                        if (response.status === "pass") {
+                            let items = response.items;
+                            console.log(items);
+                            resolve(items);
+                        }else{
+                            let regis = new Register();
+                            regis.upd(response.error);
+                        }
+                    }
+                }
+            };
+            let data = JSON.stringify({username:name,authKey:code});
+            console.log(data);
+            xhr.send(data);
+        });
+        return result;
+    }
+
+    getEquipedItem(name,code){
+        let result = new Promise((resolve,reject) => {
+            let xhr = new XMLHttpRequest();
+            let url = "http://env-8452931.mircloud.host/course/rest/getEquipedItem";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        console.log(xhr.responseText);
+                        let response = JSON.parse(xhr.responseText);
+                        if (response.status === "pass") {
+                            let itemsname = response.itemname;
+                            resolve(itemsname);
+                        }else{
+                            let regis = new Register();
+                            regis.upd(response.error);
+                        }
+                    }
+                }
+            };
+            let data = JSON.stringify({username:name,authKey:code});
+            console.log(data);
+            xhr.send(data);
+        });
+        return result;
+    }
+
+
+    equipItem(name,code,itemname){
+        let result = new Promise((resolve,reject) => {
+            let xhr = new XMLHttpRequest();
+            let url = "http://env-8452931.mircloud.host/course/rest/equipItem";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("itemname", itemname);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        console.log(xhr.responseText);
+                        let response = JSON.parse(xhr.responseText);
+                        if (response.status === "pass") {
+
+                        }else{
+                            let regis = new Register();
+                            regis.upd(response.error);
+                        }
+                    }
+                }
+            };
+            let data = JSON.stringify({username:name,authKey:code});
+            console.log(data);
+            xhr.send(data);
+        });
+        return result;
+    }
+
 }
