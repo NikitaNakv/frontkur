@@ -4,7 +4,7 @@ import ProfileSettings from "./ProfileSettings"
 import Client from './Client';
 import Menu from './Menu';
 
-class Profile extends Component{
+class Dungeon extends Component{
 
 
     constructor(props) {
@@ -15,7 +15,6 @@ class Profile extends Component{
     onClick(path){
         window.location.assign("." + path);
     }
-
 
     render() {
 
@@ -29,4 +28,4 @@ class Profile extends Component{
     };
 }
 
-export default Profile;
+export default Dungeon;

@@ -1,34 +1,61 @@
 import React, { Component } from 'react';
 import './App.css';
+import Client from './Client';
 
-const DUMMY_DATA = [
-    {
-        senderId: "perborgen",
-        text: "who'll win?"
-    },
-    {
-        senderId: "janedoe",
-        text: "who'll win?"
-    }
-];
 
 export default class Chat extends Component {
     constructor(props) {
         super(props);
         this.state = {
             messages: [],
-            chatRooms:[]
+            chatRooms: []
         };
+        this.client = new Client();
         this.sendMessage = this.sendMessage.bind(this)
     }
 
     componentDidMount() {
+       this.client.getChats(localStorage.getItem('username'),localStorage.getItem('authKey'))
+            .then(r => this.setState({chatRooms:r}));
 
-        // TODO запрос на получение сообщений
+        console.log(this.state.messages);
+
+        this.interval = setInterval(()=>this.client.getChatMessages(localStorage.getItem('username'),localStorage.getItem('authKey'),this.state.chatRooms[0].chatname)
+            .then(r => this.setState({messages:r})),500);
 
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state.messages === nextState.messages && this.state.chatRooms === nextState.chatRooms){
+            console.log("false");
+            return false;
+        }
+        return true;
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
+
     sendMessage(text) {
+        let room = this.getSelectedRoom();
+        let message = {
+            id : 0,
+            chatname : room,
+            username : localStorage.getItem("username"),
+            text : text,
+            date : Date.now().toString()
+
+        };
+        this.state.messages.unshift(message);
+        this.forceUpdate();
+        this.client.sendMessage(localStorage.getItem("username"),localStorage.getItem("authKey"),
+            "aloha",text);
+    }
+
+    getSelectedRoom(){
+        return document.getElementById("selectRoom").value
     }
 
     render() {
@@ -45,18 +72,23 @@ export default class Chat extends Component {
 }
 
 class MessageList extends Component {
+
+    constructor(props){
+        super(props);
+    }
+
     render() {
         return (
-            <ul className="message-list">
-                {this.props.messages.map((message, index) => {
+            <div id="message-list" className="message-list">
+                {this.props.messages.map((message, i) => {
                     return (
-                        <li  key={message.id} className="message">
-                            <div>{message.senderId}</div>
+                        <li  key={i} className="message">
+                            <div>{message.username}</div>
                             <div>{message.text}</div>
                         </li>
                     )
                 })}
-            </ul>
+            </div>
         )
     }
 }
@@ -105,10 +137,12 @@ class Rooms extends Component{
     constructor(props) {
         super(props)
     }
+
     render() {
         return (
-            <select>
-            {this.props.chatRooms.map((chatRooms, i) => <option key={i}>{chatRooms.name}</option>)}
+            <select id="selectRoom">
+                {this.props.chatRooms.map((chatRooms, i) =>
+                    <option key={i} value={chatRooms.chatname}>{chatRooms.chatname}</option>)}
             </select>
         )
     }
@@ -117,7 +151,7 @@ class Rooms extends Component{
 
 
 
-/*<td>{Math.round(this.props.pts.x*100)/100}</td>
+              /*<td>{Math.round(this.props.pts.x*100)/100}</td>
                 <td>{Math.round(this.props.pts.y*100)/100}</td>
                 <td>{Math.round(this.props.pts.r*100)/100}</td>
                 <td>{Math.round(this.props.pts.result*100)/100}</td>*/

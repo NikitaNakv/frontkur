@@ -4,18 +4,13 @@ import ProfileSettings from "./ProfileSettings"
 import Client from './Client';
 import Menu from './Menu';
 
-class Profile extends Component{
+class Arena extends Component{
 
 
     constructor(props) {
         super(props);
         this.client = new Client();
     }
-
-    onClick(path){
-        window.location.assign("." + path);
-    }
-
 
     render() {
 
@@ -29,4 +24,4 @@ class Profile extends Component{
     };
 }
 
-export default Profile;
+export default Arena;

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import {Link} from "react-router-dom";
 import Client from './Client';
+import RouterButton from './RouterButton';
+import Logo from './Logo';
+
 
 export default class Register extends Component {
     constructor(props){
@@ -54,21 +56,29 @@ export default class Register extends Component {
 
         return (
             <div className="register">
-                <ul>
-                    <li>
-                        <Link to="/info">Info Page</Link>
-                        <Link to="/register">Register Page</Link>
-                        <Link to="/login">Login Page</Link>
-                    </li>
-                </ul>
+                <div>
+                    <Logo id="LOGO" path="/info" text="LOGO"/>
+                    <RouterButton path="/login" text="Login"/>
+                    <RouterButton path="/register" text="Register"/>
+                </div>
                 <div id="idsa_div">
                     <label id="idsa"/>
                 </div>
                 <form>
                     <div>
+                        <label className="textLabel">User name</label>
                         <input className="text" id="us" type="text" placeholder="username"/>
+                    </div>
+                    <div>
+                        <label className="textLabel">User email</label>
                         <input className="text" id="email" type="text" placeholder="email"/>
+                    </div>
+                    <div>
+                        <label className="textLabel">User password</label>
                         <input className="text" id="ps" type="password" placeholder="password"/>
+                    </div>
+                    <div>
+                        <label className="textLabel">Confirm user password</label>
                         <input className="text" type="password" placeholder="confirm password"/>
                     </div>
                     <div>

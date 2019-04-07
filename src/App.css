@@ -1,4 +1,9 @@
-.player{
+.App{
+    background-color: black;
+    min-height: 1000px;
+}
+
+.profile{
     width: 100%;
     background-color: black;
     display: flex;
@@ -11,6 +16,16 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: normal;
+}
+
+.loginForm{
+    border: 2px solid lawngreen;
+}
+
+.caseContainer{
+    border: 2px solid lawngreen;
+    width: 100%;
+    min-width: 175px;
 }
 
 #LOGO{
@@ -44,17 +59,21 @@
     border: 2px solid lawngreen;
     color: lawngreen;
     background-color: black;
+    margin: 4px;
 }
 
 .text{
     border: 2px solid lawngreen;
     color: lawngreen;
     background-color: black;
+    margin: 4px;
 }
 
 .textLabel{
     color: lawngreen;
     background-color: black;
+    border: 2px solid lawngreen;
+    margin: 4px;
 }
 
 .login{
@@ -70,7 +89,7 @@
 }
 
 :root {
-    --main-color: grey;
+    --main-color: black;
     --secondary-color: lawngreen;
     --main-text-color: lawngreen;
     --secondary-text-color: lawngreen;
@@ -116,8 +135,12 @@
     margin: 0;
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
     overflow: scroll;
     background: black;
+    max-height: 300px;
+    max-width: 320px;
 }
 
 .send-message-form {

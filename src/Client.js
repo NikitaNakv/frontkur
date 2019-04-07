@@ -2,8 +2,6 @@ import Register from "./Register";
 
 export default class Client{
 
-
-
     login(name,password){
         let xhr = new XMLHttpRequest();
         let url = "http://env-8452931.mircloud.host/course/rest/loginCourse";
@@ -17,6 +15,7 @@ export default class Client{
                 if (result.status === "pass") {
                     localStorage.setItem("authKey", result.authKey);
                     localStorage.setItem("username", name);
+                    localStorage.setItem("auth", "pass");
                     window.location.assign("./profile");
                 } else {
                     let regis = new Register();
@@ -200,10 +199,10 @@ export default class Client{
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
-                        console.log(xhr.responseText);
                         let response = JSON.parse(xhr.responseText);
                         if (response.status === "pass") {
-                            resolve(response);
+                            const array = response.chats;
+                            resolve(array);
                         }else{
                             // TODO response.error
                         }
@@ -211,7 +210,6 @@ export default class Client{
                 }
             };
             let data = JSON.stringify({username:name,authKey:code});
-            console.log(data);
             xhr.send(data);
         });
         return result;
@@ -220,7 +218,7 @@ export default class Client{
     getChatMessages(name,code,chatname){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/getChats";
+            let url = "http://env-8452931.mircloud.host/course/rest/getChatMessages";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("chatname", chatname);
@@ -230,7 +228,8 @@ export default class Client{
                         console.log(xhr.responseText);
                         let response = JSON.parse(xhr.responseText);
                         if (response.status === "pass") {
-                            resolve(response);
+                            const messages = response.messages.reverse();
+                            resolve(messages);
                         }else{
                             // TODO response.error
                         }

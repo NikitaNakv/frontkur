@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import {Link,Redirect} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import Client from "./Client";
+import RouterButton from './RouterButton';
+import Logo from './Logo';
 
 export default class Login extends Component {
     constructor(props){
@@ -33,27 +35,34 @@ export default class Login extends Component {
 
     render() {
 
-
         let { from } = this.props.location.state || { from: { pathname: "/profile" } };
+
         let { redirectToReferrer } = this.state;
 
         if (redirectToReferrer) return <Redirect to={from} />;
 
 
         return (
+
             <div className="login">
-                <ul>
-                    <li>
-                        <Link to="/info">Info Page</Link>
-                        <Link to="/register">Register Page</Link>
-                        <Link to="/login">Login Page</Link>
-                    </li>
-                </ul>
-                <form>
-                    <input id="us" className="text" type="text" placeholder="username"/>
-                    <input id="ps" className="text" type="password" placeholder="current-password"/>
-                </form>
-                <button className="button" onClick={()=>{this.login().bind(this)}}>Log in</button>
+                <div>
+                    <Logo id="LOGO" path="/info" text="LOGO"/>
+                    <RouterButton path="/login" text="Login"/>
+                    <RouterButton path="/register" text="Register"/>
+                </div>
+                <div className="loginForm">
+                    <form>
+                        <div>
+                            <label className="textLabel">User name</label>
+                            <input id="us" className="text" type="text" placeholder="username"/>
+                        </div>
+                        <div>
+                            <label className="textLabel">User password</label>
+                            <input id="ps" className="text" type="password" placeholder="current-password"/>
+                        </div>
+                    </form>
+                    <button className="button" onClick={()=>{this.login()}}>Log in</button>
+                </div>
             </div>
         );
     }

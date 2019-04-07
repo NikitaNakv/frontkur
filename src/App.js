@@ -6,6 +6,10 @@ import Profile from './Profile';
 import Info from './Info';
 import Register from './Register';
 import Client from "./Client";
+import Dungeon from "./Dungeon";
+import Inventory from "./Inventory";
+import Stats from "./Stats";
+import Arena from "./Arena";
 
 class App extends Component{
 
@@ -21,7 +25,7 @@ class App extends Component{
 
 
         return(
-            <div>
+            <div className="App">
                 <div className="Router">
                     <Router>
                         <div>
@@ -29,11 +33,10 @@ class App extends Component{
                             <Route path="/info" component={Info}/>
                             <Route path="/login" render={(props) => <Login {...props} />} />
                             <PrivateRoute path="/profile" component={Profile} />
-                            <PrivateRoute path="/inventory" component={Profile} />
-                            <PrivateRoute path="/stats" component={Profile} />
-                            <PrivateRoute path="/dungeon" component={Profile} />
-                            <PrivateRoute path="/arena" component={Profile} />
-                            <PrivateRoute path="/chat" component={Profile} />
+                            <PrivateRoute path="/inventory" component={Inventory} />
+                            <PrivateRoute path="/stats" component={Stats} />
+                            <PrivateRoute path="/dungeon" component={Dungeon} />
+                            <PrivateRoute path="/arena" component={Arena} />
                         </div>
                     </Router>
                 </div>

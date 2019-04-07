@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import {Link} from "react-router-dom";
+import RouterButton from './RouterButton';
+import Logo from './Logo';
+
 
 class Info extends Component{
 
     render() {
         return(
             <div className="info">
-                <ul>
-                    <li>
-                        <Link to="/info">Info Page</Link>
-                        <Link to="/register">Register Page</Link>
-                        <Link to="/login">Login Page</Link>
-                    </li>
-                </ul>
-                Its a info page!
+                <div>
+                    <Logo id="LOGO" path="/info" text="LOGO"/>
+                    <RouterButton path="/login" text="Login"/>
+                    <RouterButton path="/register" text="Register"/>
+                </div>
             </div>
         )
     };
