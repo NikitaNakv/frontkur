@@ -41,7 +41,7 @@ export default class DungeonSettings extends Component {
     }
 
     fightHandler() {
-        localStorage.setItem("worldname",document.getElementById("select").value);
+        localStorage.setItem("worldname",document.getElementById("selectWorld").value);
         window.location.assign("./fight");
     }
 

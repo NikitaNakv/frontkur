@@ -21,8 +21,10 @@ class Profile extends Component{
         return(
             <div className="profile">
                 <Menu/>
-                <ProfileSettings/>
-                <Chat/>
+                <div className="Main">
+                    <ProfileSettings/>
+                    <Chat/>
+                </div>
             </div>
         )
     };

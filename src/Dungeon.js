@@ -21,8 +21,10 @@ class Dungeon extends Component{
         return(
             <div className="dungeon">
                 <Menu/>
-                <DungeonSettings/>
-                <Chat/>
+                <div className="Main">
+                    <DungeonSettings/>
+                    <Chat/>
+                </div>
             </div>
         )
     };

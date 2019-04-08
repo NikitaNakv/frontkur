@@ -23,9 +23,11 @@ class Inventory extends Component{
         return(
             <div className="inventory">
                 <Menu/>
-                <InventorySettings/>
-                <CaseSettings/>
-                <Chat/>
+                <div className="Main">
+                    <InventorySettings/>
+                    <CaseSettings/>
+                    <Chat/>
+                </div>
             </div>
         )
     };

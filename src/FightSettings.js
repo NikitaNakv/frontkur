@@ -10,13 +10,15 @@ export default class DungeonSettings extends Component {
         };
         this.client = new Client();
     }
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
 
     componentDidMount(){
         this.client.worldBattle(localStorage.getItem("username"),localStorage.getItem("authKey"),this.state.worldname)
     .then(r=>{this.setState({battleInfo:r})});
         console.log(this.state.battleInfo);
-        setTimeout(()=>console.log(this.state.battleInfo),300);
-        setTimeout(()=>document.getElementById("textArea").innerHTML = this.state.battleInfo,500);
+        this.interval = setInterval(()=>document.getElementById("textArea").innerHTML = this.state.battleInfo,500);
     }
 
 

@@ -21,8 +21,10 @@ class Stats extends Component{
         return(
             <div className="stats">
                 <Menu/>
-                <StatsSettings/>
-                <Chat/>
+                <div className="Main">
+                    <StatsSettings/>
+                    <Chat/>
+                </div>
             </div>
         )
     };

@@ -21,8 +21,10 @@ class Arena extends Component{
         return(
             <div className="dungeon">
                 <Menu/>
-                <FightSettings/>
-                <Chat/>
+                <div className="Main">
+                    <FightSettings/>
+                    <Chat/>
+                </div>
             </div>
         )
     };
