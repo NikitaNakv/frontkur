@@ -50,7 +50,6 @@ export default class InventorySettings extends Component {
     equipHandler() {
         this.client.equipItem(localStorage.getItem("username"),localStorage.getItem("authKey"),
             this.state.items.find(x=>x.itemName === document.getElementById("select").value).itemName);
-        setTimeout(() => this.forceUpdate(),100);
     }
 
     render() {
@@ -89,11 +88,11 @@ export default class InventorySettings extends Component {
                             <label className="textLabel">Equiped item:</label>
                             <label className="textLabel" >{this.state.equipedItem.toString()}</label>
                         </div>
+                        <div id="idsa_div">
+                            <label id="idsa"/>
+                        </div>
                     </div>
                 </form>
-                <div id="idsa_div">
-                    <label id="idsa"/>
-                </div>
             </div>
         );
     }

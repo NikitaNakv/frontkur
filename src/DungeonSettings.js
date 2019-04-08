@@ -25,15 +25,30 @@ export default class DungeonSettings extends Component {
     }
 
     getWorldInfo(){
-        let worldName = "dota";
-        this.client.getWorldInfo(localStorage.getItem("username"),localStorage.getItem("authKey"),worldName)
-            .then(r=>{this.setState({info:r})});
+        if (document.getElementById("selectWorld").value === null ||
+            document.getElementById("selectWorld").value === "" ||
+            document.getElementById("selectWorld").value === undefined) {
+            let world = "dota";
+            this.client.getWorldInfo(localStorage.getItem("username"), localStorage.getItem("authKey"), world)
+                .then(r => {
+                    this.setState({info: r})
+                });
+        }else {
+            let world = document.getElementById("selectWorld").value;
+            this.client.getWorldInfo(localStorage.getItem("username"),localStorage.getItem("authKey"),world)
+                .then(r=>{this.setState({info:r})});
+        }
     }
-
 
     fightHandler() {
         localStorage.setItem("worldname",document.getElementById("select").value);
         window.location.assign("./fight");
+    }
+
+    selectHandler(e){
+        let world = e.target.value;
+        this.client.getWorldInfo(localStorage.getItem("username"),localStorage.getItem("authKey"),world)
+            .then(r=>{this.setState({info:r})});
     }
 
     render() {
@@ -41,7 +56,7 @@ export default class DungeonSettings extends Component {
             <div className="dungeonSettings">
                 <form>
                     <div>
-                        <select id="select">
+                        <select className="select" id="selectWorld" onChange={(e)=>{this.selectHandler(e)}}>
                             {this.state.worlds.map((world, i) =>
                                 <option key={i} value={world.worldname}>{world.worldname}</option>)}
                         </select>

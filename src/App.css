@@ -456,6 +456,12 @@
         color: lawngreen;
     }
 
+    .select{
+        width: 100%;
+        background-color: black;
+        color: lawngreen;
+    }
+
     .login{
         background-color: black;
     }
@@ -716,7 +722,10 @@
         color: lawngreen;
         background-color: black;
         margin: 4px;
-        max-width: 250px;
+        resize: none;
+        overflow: hidden;
+        min-height: 50px;
+        max-height: 100px;
     }
 
 

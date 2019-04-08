@@ -60,13 +60,13 @@ export default class ChatSettings extends Component {
             <div className="profileSettings">
                 <form>
                     <div>
-                        <select id="selectChat" onChange={()=>{this.chatSelectHandler()}}>
+                        <select className="select" id="selectChat" onChange={()=>{this.chatSelectHandler()}}>
                             {this.state.adminedChats.map((chat, i) =>
                                 <option key={i} value={chat.chatname}>{chat.chatname}</option>)}
                         </select>
                     </div>
                     <div>
-                        <select id="selectRequest">
+                        <select className="select" id="selectRequest">
                             {this.state.requests.map((request, i) =>
                                 <option key={i} value={request.username}>{request.username}</option>)}
                         </select>

@@ -78,9 +78,6 @@ export default class CaseSettings extends Component {
                         <label id="lastDrop" className="textLabel"/>
                     </div>
                 </form>
-                <div id="idsa_div">
-                    <label id="idsa"/>
-                </div>
             </div>
         );
     }

@@ -1,51 +1,41 @@
 import React, { Component } from 'react';
 import Client from './Client';
+import Register from "./Register";
 
 export default class ArenaSettings extends Component {
     constructor(props){
         super(props);
         this.state = {
-
+            battleInfo: {}
         };
         this.client = new Client();
+        this.regist = new Register();
+    }
+
+    componentWillMount() {
+        this.timeout = setTimeout(()=>{this.regist.upd("no opponents")},100000);
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.timeout);
+    }
+
+    componentDidMount(){
+        this.client.arena(localStorage.getItem("username"),localStorage.getItem("authKey"))
+            .then(r=>{this.setState({battleInfo:r})});
+        setInterval(()=>document.getElementById("textArea").innerHTML = this.state.battleInfo,5000);
     }
 
 
     render() {
         return (
             <div className="arenaSettings">
+                <div>
+                    <label className="textLabel">you will get your opponent soon</label>
+                </div>
                 <form>
                     <div>
-                        <select id="select">
-
-                        </select>
-                    </div>
-                    <div>
-                        <div>
-                            <label className="textLabel" >count:</label>
-                            <label className="textLabel"></label>
-                        </div>
-                        <div>
-                            <label className="textLabel">Item's name:</label>
-                            <label className="textLabel" ></label>
-                        </div>
-                        <div>
-                            <label className="textLabel">attack:</label>
-                            <label className="textLabel" ></label>
-                        </div>
-                        <div>
-                            <label className="textLabel">defense:</label>
-                            <label className="textLabel" ></label>
-                        </div>
-                        <div>
-                            <label className="textLabel">hp:</label>
-                            <label className="textLabel" ></label>
-                        </div>
-                        <button type="button" className="button" >Equip it</button>
-                        <div>
-                            <label className="textLabel">Equiped item:</label>
-                            <label className="textLabel" ></label>
-                        </div>
+                        <textarea className="textArea" id="textArea">{this.state.battleInfo}</textarea>
                     </div>
                 </form>
                 <div id="idsa_div">

@@ -95,7 +95,6 @@ export default class Client{
                 }
             };
             let data = JSON.stringify({username: name, authKey: code});
-            console.log(data);
             xhr.send(data);
         });
         let onResolved = () => localStorage.setItem("auth","pass");
@@ -178,14 +177,12 @@ export default class Client{
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
-                        console.log(xhr.responseText);
                         let info = JSON.parse(xhr.responseText);
                         resolve(info);
                     }
                 }
             };
             let data = JSON.stringify({username:username,authKey:authKey});
-            console.log(data);
             xhr.send(data);
         });
         return result;
@@ -298,7 +295,6 @@ export default class Client{
                 }
             };
             let data = JSON.stringify({chatname:chatname});
-            console.log(data);
             xhr.send(data);
         });
         return result;
@@ -328,7 +324,6 @@ export default class Client{
                 }
             };
             let data = JSON.stringify({chatname:chatname});
-            console.log(data);
             xhr.send(data);
         });
         return result;
@@ -358,7 +353,6 @@ export default class Client{
                 }
             };
             let data = JSON.stringify({chatname:chatname});
-            console.log(data);
             xhr.send(data);
         });
         return result;
@@ -389,7 +383,6 @@ export default class Client{
                 }
             };
             let data = JSON.stringify({chatname:chatname});
-            console.log(data);
             xhr.send(data);
         });
         return result;
@@ -417,7 +410,6 @@ export default class Client{
                 }
             };
             let data = JSON.stringify({username:name,authKey:code});
-            console.log(data);
             xhr.send(data);
     });
     return result;
@@ -445,7 +437,6 @@ export default class Client{
                 }
             };
             let data = JSON.stringify({username:name,authKey:code});
-            console.log(data);
             xhr.send(data);
         });
         return result;
@@ -466,14 +457,12 @@ export default class Client{
                             let itemname = response.itemname;
                             resolve(itemname);
                         }else{
-                            let regis = new Register();
-                            regis.upd(response.error);
+
                         }
                     }
                 }
             };
             let data = JSON.stringify({username:name,authKey:code});
-            console.log(data);
             xhr.send(data);
         });
         return result;
@@ -502,7 +491,6 @@ export default class Client{
                 }
             };
             let data = JSON.stringify({username:name,authKey:code});
-            console.log(data);
             xhr.send(data);
         });
         return result;
@@ -529,7 +517,6 @@ export default class Client{
                 }
             };
             let data = JSON.stringify({username:name,authKey:code});
-            console.log(data);
             xhr.send(data);
         });
         return result;
@@ -558,7 +545,6 @@ export default class Client{
                 }
             };
             let data = JSON.stringify({username:name,authKey:code});
-            console.log(data);
             xhr.send(data);
         });
         return result;
@@ -585,7 +571,6 @@ export default class Client{
                 }
             };
             let data = JSON.stringify({username:name,authKey:code});
-            console.log(data);
             xhr.send(data);
         });
         return result;
@@ -612,7 +597,6 @@ export default class Client{
                 }
             };
             let data = JSON.stringify({username:name,authKey:code});
-            console.log(data);
             xhr.send(data);
         });
         return result;
@@ -639,7 +623,6 @@ export default class Client{
                 }
             };
             let data = JSON.stringify({username:name,authKey:code});
-            console.log(data);
             xhr.send(data);
         });
         return result;
@@ -666,7 +649,6 @@ export default class Client{
                 }
             };
             let data = JSON.stringify({username:name,authKey:code});
-            console.log(data);
             xhr.send(data);
         });
         return result;
@@ -694,10 +676,35 @@ export default class Client{
                 }
             };
             let data = JSON.stringify({username:name,authKey:code});
-            console.log(data);
             xhr.send(data);
         });
         return result;
     }
 
+
+    arena(name,code){
+        let result = new Promise((resolve,reject) => {
+            let xhr = new XMLHttpRequest();
+            let url = "http://env-8452931.mircloud.host/course/rest/arena";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        let response = JSON.parse(xhr.responseText);
+                        if (response.status === "pass") {
+                            let log = response.battlelog;
+                            resolve(log);
+                        }else{
+                            let regis = new Register();
+                            regis.upd(response.error);
+                        }
+                    }
+                }
+            };
+            let data = JSON.stringify({username:name,authKey:code});
+            xhr.send(data);
+        });
+        return result;
+    }
 }
