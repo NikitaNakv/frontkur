@@ -14,9 +14,6 @@ export default class Login extends Component {
     }
 
     componentWillMount() {
-        let client = new Client();
-        console.log(client.auth(localStorage.getItem("username"),localStorage.getItem("authKey")));
-        this.client.auth(localStorage.getItem("username"),localStorage.getItem("authKey"));
         if (localStorage.getItem("auth") === "pass"){
             window.location.assign("./profile");
         }
@@ -34,14 +31,6 @@ export default class Login extends Component {
     };
 
     render() {
-
-        let { from } = this.props.location.state || { from: { pathname: "/profile" } };
-
-        let { redirectToReferrer } = this.state;
-
-        if (redirectToReferrer) return <Redirect to={from} />;
-
-
         return (
 
             <div className="login">

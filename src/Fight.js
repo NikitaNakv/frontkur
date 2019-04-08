@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import Chat from "./Chat";
-import InventorySettings from "./InventorySettings"
-import CaseSettings from "./CaseSettings"
+import FightSettings from "./FightSettings"
 import Client from './Client';
 import Menu from './Menu';
 
-class Inventory extends Component{
+class Arena extends Component{
 
 
     constructor(props) {
         super(props);
-        this.state = {
-        };
         this.client = new Client();
     }
 
@@ -20,15 +17,15 @@ class Inventory extends Component{
     }
 
     render() {
+
         return(
-            <div className="inventory">
+            <div className="dungeon">
                 <Menu/>
-                <InventorySettings/>
-                <CaseSettings/>
+                <FightSettings/>
                 <Chat/>
             </div>
         )
     };
 }
 
-export default Inventory;
+export default Arena;

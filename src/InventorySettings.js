@@ -16,10 +16,16 @@ export default class InventorySettings extends Component {
     componentWillMount() {
         this.client.getUserItems(localStorage.getItem("username"),localStorage.getItem("authKey"))
             .then(r=>this.setState({items:r}));
+        this.interval = setInterval(()=>this.client.getUserItems(localStorage.getItem("username"),localStorage.getItem("authKey"))
+            .then(r=>this.setState({items:r})),1000);
     };
 
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
     getSelectedItem(){
-        let currentItem = this.state.items.find(x=>x.itemName === document.getElementById("selectItem").value);
+        let currentItem = this.state.items.find(x=>x.itemName === document.getElementById("select").value);
         this.setState({currentItem : currentItem});
     };
     getEquipedItem(){
@@ -34,7 +40,7 @@ export default class InventorySettings extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
-        if (this.state.items.length === nextState.items.length && this.state.currentItem === nextState.currentItem &&
+        if (this.state.items === nextState.items && this.state.currentItem === nextState.currentItem &&
             this.state.equipedItem === nextState.equipedItem) {
             return false
         }
@@ -43,7 +49,7 @@ export default class InventorySettings extends Component {
 
     equipHandler() {
         this.client.equipItem(localStorage.getItem("username"),localStorage.getItem("authKey"),
-            this.state.items.find(x=>x.itemName === document.getElementById("selectItem").value).itemName);
+            this.state.items.find(x=>x.itemName === document.getElementById("select").value).itemName);
         setTimeout(() => this.forceUpdate(),100);
     }
 
@@ -52,7 +58,7 @@ export default class InventorySettings extends Component {
             <div className="inventorySettings">
                 <form>
                     <div>
-                        <select id="selectItem" onChange={()=>{this.getSelectedItem()}}>
+                        <select id="select" onChange={()=>{this.getSelectedItem()}}>
                             {this.state.items.map((item, i) =>
                                 <option key={i} value={item.itemName}>{item.itemName}</option>)}
                         </select>

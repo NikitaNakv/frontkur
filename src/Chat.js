@@ -21,7 +21,7 @@ export default class Chat extends Component {
         console.log(this.state.messages);
 
         this.interval = setInterval(()=>this.client.getChatMessages(localStorage.getItem('username'),localStorage.getItem('authKey'),this.getSelectedRoom())
-            .then(r => this.setState({messages:r})),1000);
+            .then(r => this.setState({messages:r})),2000);
 
     }
 

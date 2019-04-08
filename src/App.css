@@ -1,207 +1,835 @@
-.App{
-    background-color: black;
-    min-height: 1000px;
+@media  (min-width: 1167px) {
+    .App {
+        background-color: black;
+        min-height: 1000px;
+    }
+
+    .profile {
+        width: 100%;
+        background-color: black;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: normal;
+    }
+
+    .stats {
+        width: 100%;
+        background-color: black;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: normal;
+    }
+
+    .arena {
+        width: 100%;
+        background-color: black;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: normal;
+    }
+
+    .dungeon {
+        width: 100%;
+        background-color: black;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: normal;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: normal;
+        margin: 10px;
+    }
+
+    .inventorySettings {
+        width: 280px;
+        border: 2px solid lawngreen;
+        margin: 10px;
+    }
+
+    .caseSettings {
+        width: 280px;
+        border: 2px solid lawngreen;
+        margin: 10px;
+    }
+
+    .dungeonSettings {
+        width: 280px;
+        border: 2px solid lawngreen;
+        margin: 10px;
+    }
+
+    .arenaSettings {
+        width: 280px;
+        border: 2px solid lawngreen;
+        margin: 10px;
+    }
+
+    .statsSettings {
+        width: 280px;
+        border: 2px solid lawngreen;
+        margin: 10px;
+    }
+
+    .fightSettings {
+        width: 280px;
+        border: 2px solid lawngreen;
+        margin: 10px;
+        height: 600px;
+    }
+
+    .inventory {
+        width: 100%;
+        background-color: black;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: normal;
+    }
+
+    .caseContainer {
+        border: 2px solid lawngreen;
+        width: 100%;
+        min-width: 175px;
+    }
+
+    #LOGO {
+        display: block;
+        width: 150px;
+        height: 150px;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 150px;
+        margin: 0 10px 10px 0;
+        padding: 10px 21px;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 16px;
+        color: lawngreen; /*#3e3e3e;*/
+        background: black; /*#7cb289;*/
+        transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+        float: left;
+    }
+
+    .profileSettings {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: normal;
+        border: 2px solid lawngreen;
+        margin: 5px;
+        min-width: 300px;
+    }
+
+    .profileInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: normal;
+    }
+
+    .profileInfoContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: normal;
+    }
+
+    .button {
+        border: 2px solid lawngreen;
+        color: lawngreen;
+        background-color: black;
+        margin: 4px;
+    }
+
+    .text {
+        border: 2px solid lawngreen;
+        color: lawngreen;
+        background-color: black;
+        margin: 4px;
+    }
+
+    .textArea {
+        border: 2px solid lawngreen;
+        color: lawngreen;
+        background-color: black;
+        margin: 4px;
+        max-width: 250px;
+    }
+
+
+    .textLabel {
+        color: lawngreen;
+        background-color: black;
+        margin: 4px;
+    }
+
+    #select {
+        width: 100%;
+        background-color: black;
+        color: lawngreen;
+    }
+
+    .login {
+        background-color: black;
+    }
+
+    .register {
+        background-color: black;
+    }
+
+    .info {
+        background-color: black;
+    }
+
+    :root {
+        --main-color: black;
+        --secondary-color: lawngreen;
+        --main-text-color: lawngreen;
+        --secondary-text-color: lawngreen;
+        --send-message-form: black;
+    }
+
+    .rooms {
+        border: 2px solid lawngreen;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        color: var(--secondary-color);
+        background: var(--send-message-form);
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    .message {
+        margin: 15px 0;
+    }
+
+    .message div:nth-child(1) {
+        font-size: 11px;
+        color: var(--main-text-color);
+        opacity: 0.9;
+        margin-bottom: 6px;
+    }
+
+    .message div:nth-child(2) {
+        background: var(--main-color);
+        color: var(--secondary-color);
+        display: inline;
+        padding: 4px 8px;
+        border-radius: 8px;
+    }
+
+    .message-list {
+        border: 2px solid lawngreen;
+        box-sizing: border-box;
+        padding: 0 0 0 6px;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+        overflow: scroll;
+        background: black;
+        min-height: 300px;
+        max-height: 300px;
+        min-width: 320px;
+        max-width: 320px;
+    }
+
+    .send-message-form {
+        border: 2px solid lawngreen;
+        background: var(--send-message-form);
+        display: flex;
+        box-sizing: border-box;
+        height: 60px;
+    }
+
+    .send-message-form input {
+        width: 100%;
+        padding: 15px 10px;
+        border: none;
+        margin: 0;
+        background: var(--send-message-form);
+        font-weight: 200;
+        color: lawngreen;
+    }
+
+    .send-message-form input:focus {
+        outline-width: 0;
+    }
+
+    .send-message-form input::placeholder {
+        color: lawngreen;
+    }
+
+    #selectRoom {
+        width: 100%;
+        background-color: black;
+        color: lawngreen;
+    }
+}
+@media (max-width: 1176px) and (min-width: 719px) {
+    .App{
+        background-color: black;
+        min-height: 1000px;
+    }
+
+    .profile{
+        width: 100%;
+        background-color: black;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: normal;
+    }
+    .stats{
+        width: 100%;
+        background-color: black;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: normal;
+    }
+    .arena{
+        width: 100%;
+        background-color: black;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: normal;
+    }
+    .dungeon{
+        width: 100%;
+        background-color: black;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: normal;
+    }
+    .menu{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: normal;
+        margin: 10px;
+    }
+
+    .inventorySettings{
+        width: 280px;
+        border: 2px solid lawngreen;
+        margin: 10px;
+    }
+
+    .caseSettings{
+        width: 280px;
+        border: 2px solid lawngreen;
+        margin: 10px;
+    }
+    .dungeonSettings{
+        width: 280px;
+        border: 2px solid lawngreen;
+        margin: 10px;
+    }
+    .arenaSettings{
+        width: 280px;
+        border: 2px solid lawngreen;
+        margin: 10px;
+    }
+    .statsSettings{
+        width: 280px;
+        border: 2px solid lawngreen;
+        margin: 10px;
+    }
+    .fightSettings{
+        width: 280px;
+        border: 2px solid lawngreen;
+        margin: 10px;
+        height: 600px;
+    }
+
+    .inventory{
+        width: 100%;
+        background-color: black;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: normal;
+    }
+
+    .caseContainer{
+        border: 2px solid lawngreen;
+        width: 100%;
+        min-width: 175px;
+    }
+
+    #LOGO{
+        display:block;
+        width:150px;
+        height:150px;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 150px;
+        margin:0 10px 10px 0;
+        padding:10px 21px;
+        text-transform:uppercase;
+        font-weight:400;
+        font-size:16px;
+        color:lawngreen; /*#3e3e3e;*/
+        background:black; /*#7cb289;*/
+        transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+        float: left;
+    }
+
+    .profileSettings{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: normal;
+        border: 2px solid lawngreen;
+        margin: 5px;
+        min-width: 300px;
+    }
+
+    .profileInfo{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: normal;
+    }
+
+    .profileInfoContainer{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: normal;
+    }
+
+    .button{
+        border: 2px solid lawngreen;
+        color: lawngreen;
+        background-color: black;
+        margin: 4px;
+    }
+
+    .text{
+        border: 2px solid lawngreen;
+        color: lawngreen;
+        background-color: black;
+        margin: 4px;
+    }
+
+    .textArea{
+        border: 2px solid lawngreen;
+        color: lawngreen;
+        background-color: black;
+        margin: 4px;
+        max-width: 250px;
+    }
+
+
+    .textLabel{
+        color: lawngreen;
+        background-color: black;
+        margin: 4px;
+    }
+
+    #select{
+        width: 100%;
+        background-color: black;
+        color: lawngreen;
+    }
+
+    .login{
+        background-color: black;
+    }
+
+    .register{
+        background-color: black;
+    }
+
+    .info{
+        background-color: black;
+    }
+
+    :root {
+        --main-color: black;
+        --secondary-color: lawngreen;
+        --main-text-color: lawngreen;
+        --secondary-text-color: lawngreen;
+        --send-message-form: black;
+    }
+
+    .rooms {
+        border: 2px solid lawngreen;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        color: var(--secondary-color);
+        background: var(--send-message-form);
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    .message {
+        margin: 15px 0;
+    }
+
+    .message div:nth-child(1) {
+        font-size: 11px;
+        color: var(--main-text-color);
+        opacity: 0.9;
+        margin-bottom: 6px;
+    }
+    .message div:nth-child(2) {
+        background: var(--main-color);
+        color: var(--secondary-color);
+        display: inline;
+        padding: 4px 8px;
+        border-radius: 8px;
+    }
+
+    .message-list {
+        border: 2px solid lawngreen;
+        box-sizing: border-box;
+        padding: 0 0 0 6px;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+        overflow: scroll;
+        background: black;
+        min-height: 300px;
+        max-height: 300px;
+        min-width: 320px;
+        max-width: 320px;
+    }
+
+    .send-message-form {
+        border: 2px solid lawngreen;
+        background: var(--send-message-form);
+        display: flex;
+        box-sizing: border-box;
+        height: 60px;
+    }
+
+    .send-message-form input {
+        width: 100%;
+        padding: 15px 10px;
+        border: none;
+        margin: 0;
+        background: var(--send-message-form);
+        font-weight: 200;
+        color: lawngreen;
+    }
+
+    .send-message-form input:focus {
+        outline-width: 0;
+    }
+
+    .send-message-form input::placeholder {
+        color: lawngreen;
+    }
+
+    #selectRoom{
+        width: 100%;
+        background-color: black;
+        color: lawngreen;
+    }
 }
 
-.profile{
-    width: 100%;
-    background-color: black;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: normal;
-}
-.menu{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: normal;
-    margin: 10px;
-}
+@media (max-width: 719px) {
+    .App{
+        background-color: black;
+        min-height: 1000px;
+    }
 
-.inventorySettings{
-    width: 280px;
-    border: 2px solid lawngreen;
-    margin: 10px;
-}
+    .profile{
+        width: 100%;
+        background-color: black;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: normal;
+    }
+    .stats{
+        width: 100%;
+        background-color: black;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: normal;
+    }
+    .arena{
+        width: 100%;
+        background-color: black;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: normal;
+    }
+    .dungeon{
+        width: 100%;
+        background-color: black;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: normal;
+    }
+    .menu{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: normal;
+        margin: 10px;
+    }
 
-.inventory{
-    width: 100%;
-    background-color: black;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: normal;
-}
+    .inventorySettings{
+        width: 280px;
+        border: 2px solid lawngreen;
+        margin: 10px;
+    }
 
-.caseContainer{
-    border: 2px solid lawngreen;
-    width: 100%;
-    min-width: 175px;
-}
+    .caseSettings{
+        width: 280px;
+        border: 2px solid lawngreen;
+        margin: 10px;
+    }
+    .dungeonSettings{
+        width: 280px;
+        border: 2px solid lawngreen;
+        margin: 10px;
+    }
+    .arenaSettings{
+        width: 280px;
+        border: 2px solid lawngreen;
+        margin: 10px;
+    }
+    .statsSettings{
+        width: 280px;
+        border: 2px solid lawngreen;
+        margin: 10px;
+    }
+    .fightSettings{
+        width: 280px;
+        border: 2px solid lawngreen;
+        margin: 10px;
+        height: 600px;
+    }
 
-#LOGO{
-    display:block;
-    width:150px;
-    height:150px;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 150px;
-    margin:0 10px 10px 0;
-    padding:10px 21px;
-    text-transform:uppercase;
-    font-weight:400;
-    font-size:16px;
-    color:lawngreen; /*#3e3e3e;*/
-    background:black; /*#7cb289;*/
-    transition: all 0.4s ease-in-out;
-    -moz-transition: all 0.4s ease-in-out;
-    -webkit-transition: all 0.4s ease-in-out;
-    -o-transition: all 0.4s ease-in-out;
-    float: left;
-}
+    .inventory{
+        width: 100%;
+        background-color: black;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: normal;
+    }
 
-.profileSettings{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: normal;
-    border: 2px solid lawngreen;
-    margin: 5px;
-    min-width: 300px;
-}
+    .caseContainer{
+        border: 2px solid lawngreen;
+        width: 100%;
+        min-width: 175px;
+    }
 
-.profileInfo{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: normal;
-}
+    #LOGO{
+        display:block;
+        width:150px;
+        height:150px;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 150px;
+        margin:0 10px 10px 0;
+        padding:10px 21px;
+        text-transform:uppercase;
+        font-weight:400;
+        font-size:16px;
+        color:lawngreen; /*#3e3e3e;*/
+        background:black; /*#7cb289;*/
+        transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+        float: left;
+    }
 
-.profileInfoContainer{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: normal;
-}
+    .profileSettings{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: normal;
+        border: 2px solid lawngreen;
+        margin: 5px;
+        min-width: 300px;
+    }
 
-.button{
-    border: 2px solid lawngreen;
-    color: lawngreen;
-    background-color: black;
-    margin: 4px;
-}
+    .profileInfo{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: normal;
+    }
 
-.text{
-    border: 2px solid lawngreen;
-    color: lawngreen;
-    background-color: black;
-    margin: 4px;
-}
+    .profileInfoContainer{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: normal;
+    }
 
-.textLabel{
-    color: lawngreen;
-    background-color: black;
-    margin: 4px;
-}
+    .button{
+        border: 2px solid lawngreen;
+        color: lawngreen;
+        background-color: black;
+        margin: 4px;
+    }
 
-.login{
-    background-color: black;
-}
+    .text{
+        border: 2px solid lawngreen;
+        color: lawngreen;
+        background-color: black;
+        margin: 4px;
+    }
 
-.register{
-    background-color: black;
-}
+    .textArea{
+        border: 2px solid lawngreen;
+        color: lawngreen;
+        background-color: black;
+        margin: 4px;
+        max-width: 250px;
+    }
 
-.info{
-    background-color: black;
-}
 
-:root {
-    --main-color: black;
-    --secondary-color: lawngreen;
-    --main-text-color: lawngreen;
-    --secondary-text-color: lawngreen;
-    --send-message-form: black;
-}
+    .textLabel{
+        color: lawngreen;
+        background-color: black;
+        margin: 4px;
+    }
 
-.rooms {
-    border: 2px solid lawngreen;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    color: var(--secondary-color);
-    background: var(--send-message-form);
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
+    #select{
+        width: 100%;
+        background-color: black;
+        color: lawngreen;
+    }
 
-.message {
-    margin: 15px 0;
-}
+    .login{
+        background-color: black;
+    }
 
-.message div:nth-child(1) {
-    font-size: 11px;
-    color: var(--main-text-color);
-    opacity: 0.9;
-    margin-bottom: 6px;
-}
-.message div:nth-child(2) {
-    background: var(--main-color);
-    color: var(--secondary-color);
-    display: inline;
-    padding: 4px 8px;
-    border-radius: 8px;
-}
+    .register{
+        background-color: black;
+    }
 
-.message-list {
-    border: 2px solid lawngreen;
-    box-sizing: border-box;
-    padding: 0 0 0 6px;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column-reverse;
-    overflow: scroll;
-    background: black;
-    min-height: 300px;
-    max-height: 300px;
-    min-width: 320px;
-    max-width: 320px;
-}
+    .info{
+        background-color: black;
+    }
 
-.send-message-form {
-    border: 2px solid lawngreen;
-    background: var(--send-message-form);
-    display: flex;
-    box-sizing: border-box;
-    height: 60px;
-}
+    :root {
+        --main-color: black;
+        --secondary-color: lawngreen;
+        --main-text-color: lawngreen;
+        --secondary-text-color: lawngreen;
+        --send-message-form: black;
+    }
 
-.send-message-form input {
-    width: 100%;
-    padding: 15px 10px;
-    border: none;
-    margin: 0;
-    background: var(--send-message-form);
-    font-weight: 200;
-    color: lawngreen;
-}
+    .rooms {
+        border: 2px solid lawngreen;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        color: var(--secondary-color);
+        background: var(--send-message-form);
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
 
-.send-message-form input:focus {
-    outline-width: 0;
-}
+    .message {
+        margin: 15px 0;
+    }
 
-.send-message-form input::placeholder {
-    color: lawngreen;
-}
+    .message div:nth-child(1) {
+        font-size: 11px;
+        color: var(--main-text-color);
+        opacity: 0.9;
+        margin-bottom: 6px;
+    }
+    .message div:nth-child(2) {
+        background: var(--main-color);
+        color: var(--secondary-color);
+        display: inline;
+        padding: 4px 8px;
+        border-radius: 8px;
+    }
 
-#selectRoom{
-    width: 100%;
-    background-color: black;
-    color: lawngreen;
+    .message-list {
+        border: 2px solid lawngreen;
+        box-sizing: border-box;
+        padding: 0 0 0 6px;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+        overflow: scroll;
+        background: black;
+        min-height: 300px;
+        max-height: 300px;
+        min-width: 320px;
+        max-width: 320px;
+    }
+
+    .send-message-form {
+        border: 2px solid lawngreen;
+        background: var(--send-message-form);
+        display: flex;
+        box-sizing: border-box;
+        height: 60px;
+    }
+
+    .send-message-form input {
+        width: 100%;
+        padding: 15px 10px;
+        border: none;
+        margin: 0;
+        background: var(--send-message-form);
+        font-weight: 200;
+        color: lawngreen;
+    }
+
+    .send-message-form input:focus {
+        outline-width: 0;
+    }
+
+    .send-message-form input::placeholder {
+        color: lawngreen;
+    }
+
+    #selectRoom{
+        width: 100%;
+        background-color: black;
+        color: lawngreen;
+    }
 }

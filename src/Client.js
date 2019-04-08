@@ -85,10 +85,12 @@ export default class Client{
                             localStorage.setItem("auth","pass");
                             resolve(result);
                         }
-                        else
-                            localStorage.setItem("auth","denied");
+                        else {
+                            localStorage.setItem("auth", "denied");
+                            window.location.assign("./login");
+                        }
                     } else {
-                        window.location.assign("/login");
+                        window.location.assign("./login");
                     }
                 }
             };
@@ -434,7 +436,6 @@ export default class Client{
                         let response = JSON.parse(xhr.responseText);
                         if (response.status === "pass") {
                             let items = response.items;
-                            console.log(items);
                             resolve(items);
                         }else{
                             let regis = new Register();
@@ -462,8 +463,8 @@ export default class Client{
                         console.log(xhr.responseText);
                         let response = JSON.parse(xhr.responseText);
                         if (response.status === "pass") {
-                            let itemsname = response.itemname;
-                            resolve(itemsname);
+                            let itemname = response.itemname;
+                            resolve(itemname);
                         }else{
                             let regis = new Register();
                             regis.upd(response.error);
@@ -493,6 +494,198 @@ export default class Client{
                         let response = JSON.parse(xhr.responseText);
                         if (response.status === "pass") {
 
+                        }else{
+                            let regis = new Register();
+                            regis.upd(response.error);
+                        }
+                    }
+                }
+            };
+            let data = JSON.stringify({username:name,authKey:code});
+            console.log(data);
+            xhr.send(data);
+        });
+        return result;
+    }
+
+    getUserCases(name,code){
+        let result = new Promise((resolve,reject) => {
+            let xhr = new XMLHttpRequest();
+            let url = "http://env-8452931.mircloud.host/course/rest/getUserCases";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        let response = JSON.parse(xhr.responseText);
+                        if (response.status === "pass") {
+                            let cases = response.cases;
+                            resolve(cases);
+                        }else{
+                            let regis = new Register();
+                            regis.upd(response.error);
+                        }
+                    }
+                }
+            };
+            let data = JSON.stringify({username:name,authKey:code});
+            console.log(data);
+            xhr.send(data);
+        });
+        return result;
+    }
+
+    openCase(name,code,casetype){
+        let result = new Promise((resolve,reject) => {
+            let xhr = new XMLHttpRequest();
+            let url = "http://env-8452931.mircloud.host/course/rest/openCase";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("casetype", casetype);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        console.log(xhr.responseText);
+                        let response = JSON.parse(xhr.responseText);
+                        if (response.status === "pass") {
+                            let itemname = response.itemname;
+                            resolve(itemname);
+                        }else{
+                            let regis = new Register();
+                            regis.upd(response.error);
+                        }
+                    }
+                }
+            };
+            let data = JSON.stringify({username:name,authKey:code});
+            console.log(data);
+            xhr.send(data);
+        });
+        return result;
+    }
+
+
+    getHeroStats(name,code){
+        let result = new Promise((resolve,reject) => {
+            let xhr = new XMLHttpRequest();
+            let url = "http://env-8452931.mircloud.host/course/rest/getHeroStats";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        let response = JSON.parse(xhr.responseText);
+                        if (response.status === "pass") {
+                            resolve(response);
+                        }else{
+                            let regis = new Register();
+                            regis.upd(response.error);
+                        }
+                    }
+                }
+            };
+            let data = JSON.stringify({username:name,authKey:code});
+            console.log(data);
+            xhr.send(data);
+        });
+        return result;
+    }
+
+    changeHeroName(name,code,newName){
+        let result = new Promise((resolve,reject) => {
+            let xhr = new XMLHttpRequest();
+            let url = "http://env-8452931.mircloud.host/course/rest/changeHeroName";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("new-heroname", newName);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        let response = JSON.parse(xhr.responseText);
+                        if (response.status === "pass") {
+                            resolve(response);
+                        }else{
+                            let regis = new Register();
+                            regis.upd(response.error);
+                        }
+                    }
+                }
+            };
+            let data = JSON.stringify({username:name,authKey:code});
+            console.log(data);
+            xhr.send(data);
+        });
+        return result;
+    }
+
+    getAllWorlds(name,code){
+        let result = new Promise((resolve,reject) => {
+            let xhr = new XMLHttpRequest();
+            let url = "http://env-8452931.mircloud.host/course/rest/getAllWorlds";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        let response = JSON.parse(xhr.responseText);
+                        if (response.status === "pass") {
+                            let worlds = response.worlds;
+                            resolve(worlds);
+                        }else{
+                            let regis = new Register();
+                            regis.upd(response.error);
+                        }
+                    }
+                }
+            };
+            let data = JSON.stringify({username:name,authKey:code});
+            console.log(data);
+            xhr.send(data);
+        });
+        return result;
+    }
+
+    getWorldInfo(name,code,worldName){
+        let result = new Promise((resolve,reject) => {
+            let xhr = new XMLHttpRequest();
+            let url = "http://env-8452931.mircloud.host/course/rest/getWorldInfo";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("worldname", worldName);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        let response = JSON.parse(xhr.responseText);
+                        if (response.status === "pass") {
+                            resolve(response);
+                        }else{
+                            let regis = new Register();
+                            regis.upd(response.error);
+                        }
+                    }
+                }
+            };
+            let data = JSON.stringify({username:name,authKey:code});
+            console.log(data);
+            xhr.send(data);
+        });
+        return result;
+    }
+
+    worldBattle(name,code,worldName){
+        let result = new Promise((resolve,reject) => {
+            let xhr = new XMLHttpRequest();
+            let url = "http://env-8452931.mircloud.host/course/rest/worldBattle";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("worldname", worldName);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        let response = JSON.parse(xhr.responseText);
+                        if (response.status === "pass") {
+                            let log = response.battleLog;
+                            resolve(log);
                         }else{
                             let regis = new Register();
                             regis.upd(response.error);

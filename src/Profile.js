@@ -12,6 +12,10 @@ class Profile extends Component{
         this.client = new Client();
     }
 
+    componentDidMount() {
+        this.client.auth(localStorage.getItem("username"),localStorage.getItem("authKey"));
+    }
+
     render() {
 
         return(

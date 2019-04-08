@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Chat from "./Chat";
-import ProfileSettings from "./ProfileSettings"
+import ArenaSettings from "./ArenaSettings"
 import Client from './Client';
 import Menu from './Menu';
 
@@ -12,12 +12,16 @@ class Arena extends Component{
         this.client = new Client();
     }
 
+    componentDidMount() {
+        this.client.auth(localStorage.getItem("username"),localStorage.getItem("authKey"));
+    }
+
     render() {
 
         return(
-            <div className="profile">
+            <div className="arena">
                 <Menu/>
-                <ProfileSettings/>
+                <ArenaSettings/>
                 <Chat/>
             </div>
         )

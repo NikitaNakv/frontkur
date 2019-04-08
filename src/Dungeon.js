@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Chat from "./Chat";
-import ProfileSettings from "./ProfileSettings"
+import DungeonSettings from "./DungeonSettings"
 import Client from './Client';
 import Menu from './Menu';
 
@@ -12,12 +12,16 @@ class Dungeon extends Component{
         this.client = new Client();
     }
 
+    componentDidMount() {
+        this.client.auth(localStorage.getItem("username"),localStorage.getItem("authKey"));
+    }
+
     render() {
 
         return(
-            <div className="profile">
+            <div className="dungeon">
                 <Menu/>
-                <ProfileSettings/>
+                <DungeonSettings/>
                 <Chat/>
             </div>
         )

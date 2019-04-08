@@ -11,6 +11,7 @@ import Inventory from "./Inventory";
 import Stats from "./Stats";
 import Arena from "./Arena";
 import ChatManager from './ChatManager';
+import Fight from './Fight';
 
 class App extends Component{
 
@@ -39,6 +40,7 @@ class App extends Component{
                             <PrivateRoute path="/dungeon" component={Dungeon} />
                             <PrivateRoute path="/arena" component={Arena} />
                             <PrivateRoute path="/managechats" component={ChatManager} />
+                            <PrivateRoute path="/fight" component={Fight} />
                         </div>
                     </Router>
                 </div>
