@@ -4,7 +4,7 @@ export default class Client{
 
     login(name,password){
         let xhr = new XMLHttpRequest();
-        let url = "http://env-8452931.mircloud.host/course/rest/loginCourse";
+        let url = "http://proto.mircloud.host/course/rest/loginCourse";
         xhr.open("POST", url, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onreadystatechange = function () {
@@ -32,7 +32,7 @@ export default class Client{
 
     register(name,password,email){
         let xhr = new XMLHttpRequest();
-        let url = "http://env-8452931.mircloud.host/course/rest/registerCourse";
+        let url = "http://proto.mircloud.host/course/rest/registerCourse";
         xhr.open("POST", url, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onreadystatechange = function () {
@@ -53,7 +53,7 @@ export default class Client{
 
     registerCheck(email,code){
         let xhr = new XMLHttpRequest();
-        let url = "http://env-8452931.mircloud.host/course/rest/registerCheckCourse";
+        let url = "http://proto.mircloud.host/course/rest/registerCheckCourse";
         xhr.open("POST", url, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onreadystatechange = function () {
@@ -74,7 +74,7 @@ export default class Client{
     auth(name,code){
         let prom = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/authCourse";
+            let url = "http://proto.mircloud.host/course/rest/authCourse";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.onreadystatechange = function () {
@@ -106,7 +106,7 @@ export default class Client{
 
     logout(name,code){
         let xhr = new XMLHttpRequest();
-        let url = "http://env-8452931.mircloud.host/course/rest/logoutCourse";
+        let url = "http://proto.mircloud.host/course/rest/logoutCourse";
         xhr.open("POST", url, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         let data = JSON.stringify({username:name,authKey:code});
@@ -119,7 +119,7 @@ export default class Client{
     changeEmail(name,password,newEmail){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/changeEmail";
+            let url = "http://proto.mircloud.host/course/rest/changeEmail";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("new-email", newEmail);
@@ -145,7 +145,7 @@ export default class Client{
 
     changePassword(name,password,newPassword){
         let xhr = new XMLHttpRequest();
-        let url = "http://env-8452931.mircloud.host/course/rest/changePassword";
+        let url = "http://proto.mircloud.host/course/rest/changePassword";
         xhr.open("POST", url, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.setRequestHeader("new-password", newPassword);
@@ -171,7 +171,7 @@ export default class Client{
     getInfo(username,authKey){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/getInfo";
+            let url = "http://proto.mircloud.host/course/rest/getInfo";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.onreadystatechange = function () {
@@ -192,7 +192,7 @@ export default class Client{
     getChats(name,code){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/getChats";
+            let url = "http://proto.mircloud.host/course/rest/getChats";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.onreadystatechange = function () {
@@ -218,7 +218,7 @@ export default class Client{
     getChatMessages(name,code,chatname){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/getChatMessages";
+            let url = "http://proto.mircloud.host/course/rest/getChatMessages";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("chatname", chatname);
@@ -246,7 +246,7 @@ export default class Client{
     sendMessage(name,code,chatname,text){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/sendMessage";
+            let url = "http://proto.mircloud.host/course/rest/sendMessage";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("creator-username",name);
@@ -275,7 +275,7 @@ export default class Client{
     createChat(name,code,chatname){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/createChat";
+            let url = "http://proto.mircloud.host/course/rest/createChat";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("creator-username",name);
@@ -304,7 +304,7 @@ export default class Client{
     joinChat(name,code,chatname){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/joinChat";
+            let url = "http://proto.mircloud.host/course/rest/joinChat";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("joiner-username",name);
@@ -332,7 +332,7 @@ export default class Client{
     getChatRequests(name,code,chatname){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/getChatRequests";
+            let url = "http://proto.mircloud.host/course/rest/getChatRequests";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("admin-username",name);
@@ -362,7 +362,7 @@ export default class Client{
     acceptChatRequest(name,code,joinerName,chatname){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/acceptChatRequest";
+            let url = "http://proto.mircloud.host/course/rest/acceptChatRequest";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("admin-username",name);
@@ -391,7 +391,7 @@ export default class Client{
     getAdminedChats(name,code){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/getAdminedChats";
+            let url = "http://proto.mircloud.host/course/rest/getAdminedChats";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.onreadystatechange = function () {
@@ -418,7 +418,7 @@ export default class Client{
     getUserItems(name,code){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/getUserItems";
+            let url = "http://proto.mircloud.host/course/rest/getUserItems";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.onreadystatechange = function () {
@@ -445,7 +445,7 @@ export default class Client{
     getEquipedItem(name,code){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/getEquipedItem";
+            let url = "http://proto.mircloud.host/course/rest/getEquipedItem";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.onreadystatechange = function () {
@@ -472,7 +472,7 @@ export default class Client{
     equipItem(name,code,itemname){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/equipItem";
+            let url = "http://proto.mircloud.host/course/rest/equipItem";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("itemname", itemname);
@@ -499,7 +499,7 @@ export default class Client{
     getUserCases(name,code){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/getUserCases";
+            let url = "http://proto.mircloud.host/course/rest/getUserCases";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.onreadystatechange = function () {
@@ -525,7 +525,7 @@ export default class Client{
     openCase(name,code,casetype){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/openCase";
+            let url = "http://proto.mircloud.host/course/rest/openCase";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("casetype", casetype);
@@ -554,7 +554,7 @@ export default class Client{
     getHeroStats(name,code){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/getHeroStats";
+            let url = "http://proto.mircloud.host/course/rest/getHeroStats";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.onreadystatechange = function () {
@@ -579,7 +579,7 @@ export default class Client{
     changeHeroName(name,code,newName){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/changeHeroName";
+            let url = "http://proto.mircloud.host/course/rest/changeHeroName";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("new-heroname", newName);
@@ -605,7 +605,7 @@ export default class Client{
     getAllWorlds(name,code){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/getAllWorlds";
+            let url = "http://proto.mircloud.host/course/rest/getAllWorlds";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.onreadystatechange = function () {
@@ -631,7 +631,7 @@ export default class Client{
     getWorldInfo(name,code,worldName){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/getWorldInfo";
+            let url = "http://proto.mircloud.host/course/rest/getWorldInfo";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("worldname", worldName);
@@ -657,7 +657,7 @@ export default class Client{
     worldBattle(name,code,worldName){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/worldBattle";
+            let url = "http://proto.mircloud.host/course/rest/worldBattle";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.setRequestHeader("worldname", worldName);
@@ -685,7 +685,7 @@ export default class Client{
     arena(name,code){
         let result = new Promise((resolve,reject) => {
             let xhr = new XMLHttpRequest();
-            let url = "http://env-8452931.mircloud.host/course/rest/arena";
+            let url = "http://proto.mircloud.host/course/rest/arena";
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.onreadystatechange = function () {
